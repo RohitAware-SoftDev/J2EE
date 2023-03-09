@@ -1,0 +1,13 @@
+package com.jspiders.musicPlayer;
+
+import java.util.Scanner;
+
+import com.jspiders.songoperation.SongOperation;
+
+public class MusicPlayer {
+	
+	private static boolean flag=true;
+	public static void main(String[] args) {
+		
+	}
+}

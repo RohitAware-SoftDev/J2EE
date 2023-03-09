@@ -1,0 +1,15 @@
+package com.jspiders.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+
+public class EMPInset {
+	private static EntityManagerFactory factory;
+	private static EntityManager manager;
+	private static EntityTransaction transaction;
+	
+	public static void openConnection() {
+		
+	}
+}

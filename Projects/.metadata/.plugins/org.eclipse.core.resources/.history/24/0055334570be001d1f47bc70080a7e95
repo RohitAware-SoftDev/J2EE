@@ -1,0 +1,10 @@
+package com.jspiders.DAO;
+
+public class InsertManyToMany {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,82 @@
+package jDBCSwitchCase;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Properties;
+import java.util.Scanner;
+
+public class jDBCSwitchCase {
+	private static FileReader fileReader;
+	private static Connection connection;
+	private static Statement  statement;
+	private static ResultSet resultSet;
+	private static Properties properties ;
+	private static Scanner sc;
+	private static PreparedStatement preparedStatement;	
+	private static String filePath="C:\\WEJE3\\Resource\\db_info.properties";
+	private static int result;
+	private static String query;
+	public static void main(String[] args) {
+		
+		try {
+			fileReader=new FileReader(filePath);
+			properties=new Properties();
+			properties.load(fileReader);
+			
+			Class.forName(properties.getProperty("driver"));
+			
+			connection=DriverManager.getConnection(properties.getProperty("dburl"), properties);
+			query="insert into student values "
+					+ "(?,?,?,?)";
+			preparedStatement=connection.prepareStatement(query);
+			
+			sc= new Scanner(System.in);
+						
+			System.out.println("Enter the 1. ID\n 2. NAME\n 3. EMAIL\n 4. PLACE ");
+			preparedStatement.setInt(1, sc.nextInt());
+			
+			
+			preparedStatement.setString(2, sc.toString());
+			
+		
+			preparedStatement.setString(3, sc.toString());
+			
+		
+			preparedStatement.setString(4, sc.toString());
+			
+			result=preparedStatement.executeUpdate();
+			
+			System.out.println
+			("Query OK, " + result + " row(s) affected.");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (sc != null) {
+					sc.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+}

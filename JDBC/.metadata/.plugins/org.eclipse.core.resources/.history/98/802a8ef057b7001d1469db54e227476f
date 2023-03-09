@@ -1,0 +1,5 @@
+package JdbcInsert.Entitiy;
+
+public class Student {
+
+}

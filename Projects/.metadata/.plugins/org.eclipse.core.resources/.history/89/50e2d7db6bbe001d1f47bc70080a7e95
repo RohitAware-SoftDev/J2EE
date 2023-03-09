@@ -1,0 +1,63 @@
+package com.jspiders.DAO;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+import com.jspiders.DTO.Player1;
+import com.jspiders.DTO.Team1;
+
+public class InsertManyToOne {
+	private static EntityManagerFactory factory;
+	private static EntityManager manager;
+	private static EntityTransaction transaction;
+	
+	public static void openConnection() {
+		factory=Persistence.createEntityManagerFactory("hibernate");
+		manager=factory.createEntityManager();
+		transaction=manager.getTransaction();
+	}
+	
+	public static void closeConnection() {
+		if (factory!=null) {
+			factory.close();
+		}
+		if (manager!=null) {
+			manager.close();
+		}
+		if (transaction!=null && transaction.isActive()) {
+			transaction.rollback();;
+		}
+	}
+	
+	public static void main(String[] args) {
+		try {
+			openConnection();
+			transaction.begin();
+			Team1 team1= new Team1();
+			team1.setId(1);
+			team1.setName("MumbaiIndians");
+			team1.setCity("Mumbai");
+			team1.setCoach("Zaheer Khan");
+			manager.persist(team1);
+			
+			Player1 player1= new Player1();
+			player1.setId(1);
+			player1.setJersyNo(63);
+			player1.setName("S K Yadav");
+			player1.setRole("Batsman");
+			player1.setTeam1(team1);
+			
+			Player1 player2= new Player1();
+			player2.setId(2);
+			player2.setName("S K Yadav");
+			player2.setJersyNo(63);
+			player2.setRole("Batsman");
+			player2.setTeam1(team1);
+			transaction.commit();
+		} finally {
+			closeConnection();
+		}
+	}
+}

@@ -1,0 +1,46 @@
+package com.jspiders.musicPlayer;
+
+import java.util.Scanner;
+
+import com.jspiders.songoperation.SongOperation;
+
+public class MusicPlayer {
+	private static boolean flag=true;
+	public static void main(String[] args) {
+		
+		while(flag) {
+			Scanner scanner=new Scanner(System.in);
+			System.out.println("    Menu\n 1. Play Song\n 2. Add/Removev Song\n 3. Edit\n 4. Exit ");
+			SongOperation operation=new SongOperation();
+			int choice=scanner.nextInt();
+			switch (choice) {
+			case 1:
+			{
+				operation.playSong();
+				break;
+			}
+			case 2:
+			{
+				operation.addSong();
+				break;
+			}
+			case 3:
+			{
+				operation.addSong();
+				break;
+			}
+			case 4:
+			{
+				flag=false;
+				System.out.println("Thank You For Using Our App");
+				break;
+			}
+			default:
+				System.out.println("Invalid Option");
+				break;
+			}
+			scanner.close();
+		}
+		
+	}
+}

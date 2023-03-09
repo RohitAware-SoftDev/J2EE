@@ -1,0 +1,5 @@
+package com.jspiders.DAO;
+
+public class InsertOneToMany {
+
+}

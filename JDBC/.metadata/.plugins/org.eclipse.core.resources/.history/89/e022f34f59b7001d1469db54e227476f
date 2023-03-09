@@ -1,0 +1,19 @@
+package JdbcInsert;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+
+public class Student {
+	private static Connection connection;
+	private static  Statement statement;
+	private static PreparedStatement preparedStatement;
+	private static int result;
+	private static String filepath="C:\\WEJE3\\Resource\\db_info.properties";
+	
+	
+	public static void main(String[] args) {
+		
+	}
+
+}
